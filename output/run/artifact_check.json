@@ -1,0 +1,7 @@
+{
+  "test_predictions_verified": 393,
+  "all_masks_have_valid_shape_and_class_ids": true,
+  "thermal_sanity_sample": "01402D",
+  "mean_absolute_logit_change_when_thermal_is_constant": 0.22091218829154968,
+  "interpretation": "Verifies that thermal input affects computation; does not establish an accuracy gain"
+}

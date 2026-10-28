@@ -1,0 +1,74 @@
+{
+  "date": "2026-10-06",
+  "scope": "Public MFNet reconstruction; no company-collected data or archived company predictions",
+  "upstream_model": "https://github.com/VCIP-RGBD/DFormer",
+  "model_paper": "https://arxiv.org/abs/2504.04701",
+  "dataset_source": "https://github.com/haqishen/MFNet-pytorch",
+  "backbone_source_sha256": "1dd6ba9948c23e91d36f350e3d66219d65ba9a7d5ca14f838149cd2b399be606",
+  "inputs": {
+    "encoder_checkpoint": {
+      "path": "DFormerv2_Small_NYU.pth",
+      "bytes": 107037174,
+      "sha256": "2efc0267818ea358f795c253924464695742d60812a5f489b9fc8ea5441f47e2",
+      "included_in_repository": false
+    },
+    "upstream_archive": {
+      "path": "DFormer-main.zip",
+      "bytes": 4579854,
+      "sha256": "80eff2b823ae5a45c31b6e94422cf4939c8508a9e540773fcdc9f73f6aa24e68",
+      "included_in_repository": false
+    },
+    "train_split": {
+      "path": "train.txt",
+      "bytes": 14896,
+      "sha256": "e14ef52501a5d0000361e79acb42734f391427ac5a4164ad7864b0d2718269f7",
+      "included_in_repository": false
+    },
+    "validation_split": {
+      "path": "val.txt",
+      "bytes": 2744,
+      "sha256": "446e9dbcee6a66bb95331dc704a2e184b723e5dd8aded861dbf76c9968879180",
+      "included_in_repository": false
+    },
+    "test_split": {
+      "path": "test.txt",
+      "bytes": 2751,
+      "sha256": "a236aa6ac7e55ec6b5e419b55c6934439611453939eee2c0bf7b0f0c34917c9d",
+      "included_in_repository": false
+    }
+  },
+  "new_implementation": {
+    "backbone": "DFormerV2-S; upstream geometry-prior equations reused with normalized thermal intensities",
+    "decoder": "Upstream MLPDecoder, embedding width 128, nine output classes",
+    "thermal_normalization": "Per-image 1st/99th percentiles followed by clipping to [0,1]",
+    "initialization": "NYUDepthv2-trained encoder; decoder initialized for MFNet",
+    "evaluation": "Checkpoint selection on validation set; export on separate test set",
+    "rgb_only_control": "Same architecture independently retrained with constant auxiliary map, removing thermal-intensity differences while retaining the spatial prior",
+    "comparison_scope": "Matched single-seed 20-epoch pilot; not a comparison against other RGB-T fusion strategies"
+  },
+  "source_files_sha256": {
+    "check_result.py": "454bf1448344fe3eec81c532a8585d7a862b71d32fd03e453f336a62420fe68f",
+    "compare_runs.py": "db066098ffded7c2ceb2af0805e1042b566ce7fe820f783e462e04a2168a7200",
+    "dataset.py": "9d1642a3a5f4644478487cc56144bf2568730cea833a30d9953503ed6aa04974",
+    "model.py": "e32423121e58d5a5c6d54ba3c147b6d81f1f33354aa111886d7c4ecc9844b555",
+    "render_comparison.py": "0afe3bb4de009ee6acc0c4bcf7204f3920306f67d0e3c4126d0a727fa7f79052",
+    "render_demo.py": "7cad05b3ee946c1d5523a2b0229b03f999f126448f89ef93a7499dbe94559c0e",
+    "train_demo.py": "62ac738558f09b5244a86f0cc2499275fcd19b52acf32d777eebfefe24b29771",
+    "vendor/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "vendor/dformerv2_backbone.py": "361cdad1c06f20c0e5831fe32e98b89d19616944e2ad782b655334f81a89b6a0",
+    "vendor/mlp_decoder.py": "0a11952142f6407e4ee5618d9e0575f9d70fd03c18b2a3431dc3067a4a2ceefc",
+    "vendor/torch_compat.py": "85ec6621471901824d1842877d215ed1f10a9c8ee7b28fb8cb44cac059637e78"
+  },
+  "completed_runs": {
+    "rgbt": {
+      "report": "output/run/report.json",
+      "checkpoint": "output/model/best.pth"
+    },
+    "rgb_only": {
+      "report": "output/rgb_only_run/report.json",
+      "checkpoint": "output/model/rgb_only_best.pth"
+    },
+    "comparison": "output/comparison/comparison.json"
+  },
+  "public_release_scope": "Source code and existing prediction/metric artifacts from the 2026 MFNet reconstruction. Dataset images/labels, initialization and trained weights, server configuration, and private notes are excluded."
+}

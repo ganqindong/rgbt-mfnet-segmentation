@@ -1,0 +1,51 @@
+{
+  "selected": [
+    {
+      "id": "01464D",
+      "split": "test",
+      "scene": "day",
+      "miou_9_classes": 0.693130032119978,
+      "foreground_miou_8_classes": 0.6022209625963787,
+      "pixel_accuracy": 0.9727408854166667,
+      "class_iou": {
+        "Unlabeled": 0.9658572406907762,
+        "Car": 0.9396059855743353,
+        "Person": 0.8670569022148008,
+        "Bicycle": 0.0,
+        "Curve": null,
+        "Car stop": null,
+        "Guardrail": null,
+        "Color cone": null,
+        "Bump": null
+      },
+      "foreground_pixels": 67118,
+      "person_pixels": 49291,
+      "car_pixels": 17722
+    },
+    {
+      "id": "01335N",
+      "split": "test",
+      "scene": "night",
+      "miou_9_classes": 0.7207650433270114,
+      "foreground_miou_8_classes": 0.6325450387206928,
+      "pixel_accuracy": 0.986884765625,
+      "class_iou": {
+        "Unlabeled": 0.9854250571459672,
+        "Car": 0.9361825752929404,
+        "Person": 0.7295952222959522,
+        "Bicycle": null,
+        "Curve": 0.23185731857318573,
+        "Car stop": null,
+        "Guardrail": null,
+        "Color cone": null,
+        "Bump": null
+      },
+      "foreground_pixels": 33417,
+      "person_pixels": 2484,
+      "car_pixels": 29485
+    }
+  ],
+  "selection": "High-quality qualitative examples selected by car/person performance on RGB-T test predictions; not a random or representative sample",
+  "checkpoint_epoch": 15,
+  "comparison_use": "IDs 01464D and 01335N fixed before RGB-only baseline completed; not selected based on comparison gains"
+}

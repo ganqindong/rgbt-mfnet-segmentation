@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store
+data/
+weights/
+inputs/
+staging/
+runs/
+analysis_out/
+STOP_REQUESTED
+*.pth
+*.pt
